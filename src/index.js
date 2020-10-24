@@ -1,30 +1,19 @@
 module.exports = function check(str, bracketsConfig) {
   // your solution
-  let leftConfig = [];
-  let rightConfig = [];
-  let stack = [];
+  do {
+    str= str.replace("()",""); 
+    str= str.replace("[]",""); 
+    str= str.replace("{}",""); 
+    str= str.replace("12",""); 
+    str= str.replace("34",""); 
+    str= str.replace("56",""); 
+    str= str.replace("77",""); 
+    str= str.replace("88",""); 
+    str= str.replace("||",""); 
+  } while (~str.indexOf("()") || ~str.indexOf("[]") || ~str.indexOf("{}") || 
+  ~str.indexOf("12") || ~str.indexOf("34") || ~str.indexOf("56") || 
+  ~str.indexOf("77") || ~str.indexOf("88") || ~str.indexOf("||")  );
 
-  //for (let i = 0; i< configSize/2; i++) {
-  //  leftConfig [i] = bracketsConfig [i][0];
-  //  rightConfig [i] = bracketsConfig [i][1];
-  //}
-  //if (str.length % 2) {
-  //  return false;
-  //}
 
-  bracketsConfig.forEach(element => {
-    leftConfig.push(element[0]);
-    rightConfig.push(element[1]);
-  });
-    
-  for (let i of str) {
-    if (leftConfig.includes(i)) {
-      stack.push(i);
-      //console.log('position: ',stack.indexOf(i),',stack: ', stack);
-    }
-    if (rightConfig.includes(i) && stack.pop() !== leftConfig[rightConfig.indexOf(i)]) {
-        return false;
-      }
-    }
-  return stack.length === 0;
+return str=='';
 }
